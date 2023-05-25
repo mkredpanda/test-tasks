@@ -1,0 +1,8 @@
+<ng-container *ngIf="template === 404">
+  <app-not-found></app-not-found>
+</ng-container>
+
+<ng-container *ngIf="template === 500">
+  <app-not-available [status]="status" [message]="message"></app-not-available>
+</ng-container>
+

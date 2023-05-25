@@ -1,0 +1,57 @@
+<div>
+  <header id="header">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary rounded" aria-label="JayRide Main Header">
+        <div class="container-fluid">
+          <div class="navbar-collapse collapse" style="">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li *ngFor="let nav of headerNav$ | async; let i = index;" class="nav-item">
+                <ng-container *ngIf="nav.site">
+                  <a
+                    *ngIf="!nav.navs; else elseNavs"
+                    id="Header_{{i + 1}}"
+                    class="nav-link"
+                    [routerLink]="nav.href"
+                    [routerLinkActive]="['__active']"
+                  >{{nav.label}}</a>
+                </ng-container>
+
+                <ng-container *ngIf="!nav.site">
+                  <a
+                    *ngIf="!nav.navs; else elseNavs"
+                    id="Header_{{i + 1}}"
+                    class="nav-link"
+                    [href]="nav.href"
+                  >{{nav.label}}</a>
+                </ng-container>
+
+                <ng-template #elseNavs>
+                  <a
+                    id="Header_{{i + 1}}"
+                    class="nav-link dropdown-toggle"
+                    [routerLink]="nav.href"
+                    [routerLinkActive]="['__active']"
+                  >{{nav.label}}</a>
+                      <ul class="dropdown-menu">
+                        <ng-container *ngFor="let link of nav.navs; let j = index; last as last">
+                          <li>
+                            <a
+                              class="dropdown-item"
+                              [id]="last ? 'Dropdown_all_services' : 'Dropdown_' + (j + 1)"
+                              [routerLink]="[link.href]"
+                              title="{{link.label}}" itemprop="url"
+                            >
+                              <span itemprop="name">{{link.label}}</span>
+                            </a>
+                          </li>
+                        </ng-container>
+                      </ul>
+                </ng-template>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+</div>
