@@ -1,0 +1,270 @@
+.input-group__options {
+  position: absolute;
+  top: 46px;
+  min-width: 100%;
+  background: #fff;
+  z-index: 3;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+  max-height: 240px;
+  overflow: auto;
+
+  &__item {
+    display: block;
+    padding: 8px 16px;
+    color: #343A49;
+
+    &:hover {
+      cursor: pointer;
+      background: #F1F5F9;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #E2E8F0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #A6A9AE;
+  }
+}
+
+.simple-select {
+  border: none;
+  max-width: 84px;
+  margin-bottom: 0;
+  padding: 0;
+
+  > .input-group__control {
+    padding: 0;
+  }
+}
+
+.ws-nowrap {
+  white-space: nowrap
+}
+
+.dark-border {
+  &__checkbox-group {
+    width: 16px;
+    height: 20px;
+    margin-bottom: 0;
+
+    &__checkmark {
+      border: 2px solid #A6A9AE;
+
+      &:after {
+        left: 3px;
+        top: 0;
+        width: 4px;
+        height: 7px;
+        border-width: 0 2px 2px 0;
+      }
+    }
+
+    .checkbox-group__label {
+      overflow: unset;
+    }
+
+    .checkbox-group__control[disabled] {
+      &, + .checkbox-group__checkmark {
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.checkbox-group {
+  min-height: 16px !important;
+
+  &__label {
+    width: 100%;
+
+    &-text {
+      display: block;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.input-group__dnd {
+  position: relative;
+  width: 100%;
+  min-height: 120px;
+
+  border: dashed 1px #E2E8F0;
+  border-radius: 2px;
+
+  input {
+    opacity: 0;
+    width: 100%;
+    min-height: 120px;
+  }
+}
+
+// Toggle/Slider
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 16px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid #A6A9AE;
+  transition: .1s;
+  -webkit-transition: .1s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  top: 2px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #A6A9AE;
+  transition: .1s;
+  -webkit-transition: .1s;
+}
+
+input:checked + .slider {
+  border-color: #FC3131;
+}
+
+input:checked + .slider:before {
+  background-color: #FC3131;
+}
+
+input:checked + .slider:before {
+  -ms-transform: translateX(8px);
+  transform: translateX(8px);
+}
+
+.slider.round {
+  border-radius: 8px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+input[type="range"] {
+  margin: auto;
+  -webkit-appearance: none;
+  position: relative;
+  overflow: hidden;
+  height: 24px;
+  //width: 200px;
+  cursor: pointer;
+  border-radius: 0; /* iOS */
+  padding: 0;
+}
+
+::-webkit-slider-runnable-track {
+  background: var(--color-grey-soft);
+  box-shadow: inset 10px 0 0 10px var(--color-white-original);
+}
+
+/*
+ * 1. Set to 0 width and remove border for a slider without a thumb
+ */
+::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px; /* 1 */
+  height: 24px;
+  background: var(--color-blue-sky);
+  box-shadow: -224px -214px 0 200px var(--color-white-original),
+  -224px 214px 0 200px var(--color-white-original),
+  -100vw 0 0 100vw var(--color-blue-sky) ;
+}
+
+::-moz-range-track {
+  height: 24px;
+  background: #ddd;
+}
+
+::-moz-range-thumb {
+  background: #fff;
+  height: 40px;
+  width: 20px;
+  border: 3px solid #999;
+  border-radius: 0 !important;
+  box-shadow: -100vw 0 0 100vw var(--color-blue-sky);
+  box-sizing: border-box;
+}
+
+::-ms-fill-lower {
+  background: var(--color-blue-sky);
+}
+
+::-ms-thumb {
+  background: #fff;
+  border: 2px solid #999;
+  height: 40px;
+  width: 20px;
+  box-sizing: border-box;
+}
+
+::-ms-ticks-after {
+  display: none;
+}
+
+::-ms-ticks-before {
+  display: none;
+}
+
+::-ms-track {
+  background: #ddd;
+  color: transparent;
+  height: 40px;
+  border: none;
+}
+
+::-ms-tooltip {
+  display: none;
+}
+
+.w-352 {
+  min-width: 352px;
+  max-width: 352px;
+  @media screen and (max-width: 767px) {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
+textarea {
+  resize: none;
+}
+
+textarea:disabled::-webkit-input-placeholder { /* WebKit browsers */
+  color: var(--color-grey-original);
+}
+textarea:disabled:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: var(--color-grey-original);
+}
+textarea:disabled::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: var(--color-grey-original);
+}
+textarea:disabled:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: var(--color-grey-original);
+}

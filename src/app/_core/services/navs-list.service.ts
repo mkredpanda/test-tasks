@@ -36,13 +36,19 @@ export class NavsListService {
       {
         site: true,
         seoUrl: true,
-        label: 'New User',
-        href: `/new`,
+        label: 'Home',
+        href: `/`,
       },
       {
         site: true,
-        label: 'List Users',
-        href: '/list_users',
+        seoUrl: true,
+        label: 'Booking Transfer',
+        href: `/booking-form`,
+      },
+      {
+        site: true,
+        label: 'Travel Report',
+        href: '/travel-report',
       },
     ];
   }

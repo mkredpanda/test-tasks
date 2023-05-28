@@ -1,10 +1,7 @@
 <!-- app-header -->
 <app-header *ngIf="!isWebview" [ngStyle]="{'z-index':'10'}"></app-header>
 
-<main
-  id="main"
-  [class.margin-for-header]="!isWebview"
->
+<main id="main">
   <router-outlet></router-outlet>
 </main>
 

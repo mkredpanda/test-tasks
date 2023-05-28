@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { PageLayoutService } from './_core/services/page-layout.service';
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-root',
@@ -17,9 +18,13 @@ export class AppComponent implements OnInit, OnDestroy {
     @Inject(DOCUMENT) private _document: Document,
     private _activatedRoute: ActivatedRoute,
     private _pageLayoutService: PageLayoutService,
+    private _modalService: NgbModal
   ) {
   }
 
+  public open(modal: any): void {
+    this._modalService.open(modal);
+  }
   public ngOnInit(): void {
     this._subscribeForQueryParams();
 

@@ -8,7 +8,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.сss'],
+  styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit, OnDestroy {
 
@@ -23,6 +23,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   public advantagesPageIndex = 0;
   public advantagesMaxIndex = 2;
+  // @ts-ignore
   private _interval$: NodeJS.Timeout | undefined;
 
   private _subscriptions$ = new Subscription();
@@ -35,7 +36,9 @@ export class HomePageComponent implements OnInit, OnDestroy {
   ) {
   }
   public ngOnInit(): void {
-    this._breakPointSubscribe();
+    console.log('test');
+
+    //this._breakPointSubscribe();
   }
 
   public ngOnDestroy(): void {
@@ -50,30 +53,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
       this.endSliceIndex--;
       this._initAdvantagesAutoScrolling();
     }
-  }
-
-  private _breakPointSubscribe(): void {
-    this.isMobile = this._breakPointObserver.isMatched('(min-width: 360px) and (max-width: 767px)');
-    this.isTablet = this._breakPointObserver.isMatched('(min-width: 768px) and (max-width: 1215px)');
-    this.isDesktop = this._breakPointObserver.isMatched('(min-width: 1216px)');
-    this.min768 = this._breakPointObserver.isMatched('(min-width: 768px)');
-
-    if (this.isMobile) {
-      this.advantagesMaxIndex = 4;
-      this.endSliceIndex = 1;
-    }
-
-    if (this.isTablet) {
-      this.advantagesMaxIndex = 3;
-      this.endSliceIndex = 2;
-    }
-
-    if (this.isDesktop) {
-      this.advantagesMaxIndex = 2;
-      this.endSliceIndex = 3;
-    }
-
-    this._initAdvantagesAutoScrolling();
   }
 
   private _initAdvantagesAutoScrolling(): void {

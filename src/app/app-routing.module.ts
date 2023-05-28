@@ -1,21 +1,34 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {DefaultTemplateComponent} from "./templates/default-template/default-template.component";
+import { DefaultTemplateComponent } from "./templates/default-template/default-template.component";
+import { NotFoundComponent } from "./_lazy-modules/not-found/not-found.component";
 
 const routes: Routes = [
   {
     path: '',
     component: DefaultTemplateComponent,
     loadChildren: () => import('./_lazy-modules/home-page/home-page.module').then(m => m.HomePageModule),
+    title: 'Jayride Test Task'
+  },
+  {
+    path: 'booking-form',
+    component: DefaultTemplateComponent,
+    loadChildren: () => import('./_lazy-modules/jayride-test/booking-form/booking-form.module').then(m => m.BookingFormModule),
     data: {
-      part: 'home',
-      redirectAfterLogin: true,
+      breadcrumb: 'Booking Form',
     },
   },
   {
-    path: 'not-available-page-url',
+    path: 'travel-report',
     component: DefaultTemplateComponent,
-    loadChildren: () => import('./_lazy-modules/not-available-page/not-available-module.module').then(m => m.NotAvailableModuleModule),
+    loadChildren: () => import('./_lazy-modules/jayride-test/travel-report/travel-report.module').then(m => m.TravelReportModule),
+    data: {
+      breadcrumb: 'Travel Report',
+    },
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
   },
 ];
 
@@ -25,7 +38,6 @@ const routes: Routes = [
   })],
   exports: [RouterModule]
 })
-
 
 export class AppRoutingModule { }
 

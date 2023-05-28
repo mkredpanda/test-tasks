@@ -1,0 +1,16 @@
+
+.empty-data-block {
+  position: relative;
+  text-align: center;
+  width: calc(100vw - 40px);
+
+  > p {
+    white-space: break-spaces;
+    text-align: center;
+  }
+
+  @media screen and (min-width: 1281px) {
+    margin-top: 24px;
+    width: calc(100vw - 280px - 78px);
+  }
+}

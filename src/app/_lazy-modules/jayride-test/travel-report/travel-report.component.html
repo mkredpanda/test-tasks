@@ -1,0 +1,48 @@
+<div class="container">
+  <app-table-list
+    (dataChange)="dataChange($event)"
+    [animation]="animate"
+    [config]="tableConfig"
+    [currentPage]="currentPage"
+    [hideLastColumn]="true"
+    [perPage]="perPage"
+    [queryFilters]="initialQueryFilters"
+    [sortColumn]="sortColumn"
+    [sortDir]="sortDir"
+
+  >
+    <!--[(data)]="travelReport"-->
+    <tr *ngFor="let row of travelReport">
+      <td *ngFor="let column of tableConfig.columns"
+          class="text-ellipsis {{column.columnTitle}}"
+      >
+        <ng-container *ngIf="(row | getPropertyByPath:column.propertyPath)">
+          {{row | getPropertyByPath:column.propertyPath | callPipes:column.pipes}}
+        </ng-container>
+      </td>
+    </tr>
+  </app-table-list>
+  <ng-container *ngIf="totalRec">
+    <div class="divider bg-dark"></div>
+    <div class="container">
+      <div class="col-4">
+        <div class="row">
+          <div class="col">{{"Total: "}}</div>
+          <div class="col">{{totalListings}}</div>
+        </div>
+        <div class="row">
+          <div class="col">{{"Min price: "}}</div>
+          <div class="col">{{minPrice}}</div>
+        </div>
+        <div class="row">
+          <div class="col">{{"Max price: "}}</div>
+          <div class="col">{{maxPrice}}</div>
+        </div>
+        <div class="row">
+          <div class="col">{{"Avg price: "}}</div>
+          <div class="col">{{averagePrice | number: '1.0-2'}}</div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

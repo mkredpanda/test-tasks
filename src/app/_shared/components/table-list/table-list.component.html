@@ -1,0 +1,100 @@
+<div class="">
+  <table class="table">
+    <thead>
+    <tr>
+      <th class="text-truncate" *ngIf="enableSelect">
+        <app-checkbox
+          [owner]="this"
+          (check)="onSelect($event.checked)"
+          [formControl]="checkBoxControl"
+          [darkBorder]="true"
+        ></app-checkbox>
+      </th>
+      <th *ngFor="let column of config.columns"
+          class="text-truncate {{column.columnTitle}}"
+      >
+        <button
+          class="d-flex bg-transparent text-truncate border-0"
+          type="button"
+          (click)="column.sortable ? onSort(column.propertyPath) : ''"
+        >
+          <span class="mb-0 text-truncate">{{column.columnTitle}}</span>
+          <app-svg *ngIf="sortColumn === column.propertyPath"
+                   icon="{{sortDir === 'asc' ? 'up-small' : 'down-small'}}"></app-svg>
+        </button>
+      </th>
+    </tr>
+    </thead>
+
+    <ng-container *ngIf="hasData">
+      <tbody class="table" #content>
+      <ng-content></ng-content>
+      </tbody>
+      <tbody class="table" *ngIf="!this.content.innerHTML">
+      <tr *ngFor="let row of data" (click)="onRowClick(row)">
+        <td *ngFor="let column of config.columns"  class="text-truncate">
+          <ng-container
+            *ngIf="(row | getPropertyByPath:column.propertyPath) && column.columnTitle !== 'status' && !column.columnTitle.includes('date')">
+            {{row | getPropertyByPath:column.propertyPath | callPipes:column.pipes}}
+          </ng-container>
+
+          <ng-container *ngIf="!(row | getPropertyByPath:column.propertyPath)">
+            {{column.fallbackValue}}
+          </ng-container>
+        </td>
+      </tr>
+      </tbody>
+    </ng-container>
+    <ng-container *ngIf="!hasData">
+      <div class="empty-data-block">
+          <ng-container *ngIf="!isDocuments">
+              <svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M72.4699 72.2807L83.6499 83.5407C84.1884 84.1277 84.1699 85.0344 83.608 85.599C83.0461 86.1637 82.1394 86.1864 81.5499 85.6507L70.2099 74.2307C67.3374 76.3157 63.8793 77.4393 60.3299 77.4407C52.2657 77.4587 45.3054 71.7926 43.6869 63.8925C42.0685 55.9924 46.24 48.0458 53.6617 44.8913C61.0833 41.7368 69.6998 44.2479 74.2648 50.8957C78.8297 57.5434 78.0791 66.4869 72.4699 72.2807ZM60.3826 46.4509C52.6651 46.4105 46.3705 52.6233 46.3099 60.3407C46.2987 68.0951 52.5555 74.4011 60.3099 74.4507C68.0275 74.4504 74.2893 68.2046 74.3094 60.487C74.3294 52.7695 68.1001 46.4912 60.3826 46.4509Z"
+                        fill="#475569"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M81.72 46.27L83.72 50L85.78 46.3L89.5 44.3L85.83 42.23L83.83 38.5L81.76 42.19L78.04 44.19L81.72 46.27ZM83.3 44.73L82.45 44.24L83.31 43.78L83.8 42.92L84.26 43.79L85.11 44.27L84.25 44.74L83.77 45.6L83.3 44.73Z"
+                        fill="#A6A9AE"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M42.84 89.0797L45.18 93.4897L47.6 89.1297L52 86.7897L47.67 84.3397L45.34 79.9297L42.9 84.2897L38.5 86.6297L42.84 89.0797ZM44.68 87.2597L43.68 86.6897L44.69 86.1397L45.26 85.1397L45.8 86.1397L46.8 86.7097L45.8 87.2597L45.23 88.2597L44.68 87.2597Z"
+                        fill="#A6A9AE"/>
+              </svg>
+              <p>{{'Empty'}}</p>
+          </ng-container>
+      </div>
+    </ng-container>
+  </table>
+
+  <div class="d-flex align-items-center justify-content-between" *ngIf="!hidePaginator && hasData">
+    <div class="d-flex align-items-center">
+      <form [formGroup]="paginatorForm">
+        <label for="limit" class="">{{'items on page'}}</label>
+        <select formControlName="limit" id="limit">
+          <option value="5">5</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+        </select>
+      </form>
+    </div>
+
+    <div class="d-flex alit-center">
+      <div class="paginator-page-info">
+        <label class="callout-2 mb-0">
+          {{currentPage}} {{'of'}} {{pages}}
+        </label>
+      </div>
+
+      <div class="d-flex alit-center">
+        <a class="btn btn-icon" (click)="prevPage()">
+          <app-svg icon="{{currentPage !== 1 ? 'back-enabled' : 'back-disabled'}}"></app-svg>
+        </a>
+
+        <a class="btn btn-icon" (click)="nextPage()">
+          <app-svg icon="{{currentPage < pages ? 'forward-enabled' : 'forward-disabled'}}"></app-svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,118 @@
+$prefix-class: '.mkr';
+
+// fonts
+$font-family-base: GothamPro-Regular, -apple-system, sans-serif !default;
+$font-family-bold: GothamPro-Bold, -apple-system, sans-serif !default;
+$font-family-medium: GothamPro-Medium, -apple-system, sans-serif !default;
+
+$font-size-root: null !default;
+$font-size-base: 1rem !default;
+$font-size-lg: $font-size-base * 1.25 !default;
+$font-size-sm: $font-size-base * .875 !default;
+
+// colors
+$color-grey-pure: #343A49;
+$color-grey-carbon: #475569;
+$color-grey-original: #94A3B8;
+$color-grey-mid: #E2E8F0;
+$color-grey-soft: #F1F5F9;
+$color-grey-air: #F8FAFC;
+$color-blue-deep: #075985;
+$color-blue-demi: #0284C7;
+$color-blue-original: #38BDF8;
+$color-blue-sky: #BAE6FD;
+$color-blue-powder: #E0F2FE;
+$color-blue-air: #F0F9FF;
+$color-red-deep: #991B1B;
+$color-red-chilli: #DC2626;
+$color-red-original: #FC3131;
+$color-red-soft: #F87171;
+$color-red-powder: #FECACA;
+$color-red-air: #FEF2F2;
+$color-green-pesto: #14532D;
+$color-green-dark: #16A34A;
+$color-green-original: #4ADE80;
+$color-green-soft: #86EFAC;
+$color-green-powder: #DCFCE7;
+$color-green-air: #F0FDF4;
+$color-orange-brownie: #92400E;
+$color-orange-dark: #D97706;
+$color-orange-original: #FF9B18;
+$color-orange-soft: #FDE68A;
+$color-orange-powder: #FEF3C7;
+$color-orange-air: #FFFBEB;
+$color-purple-deep: #4C1D95;
+$color-purple-dark: #6D28D9;
+$color-purple-original: #8B5CF6;
+$color-purple-soft: #A78BFA;
+$color-purple-powder: #DDD6FE;
+$color-purple-air: #F5F3FF;
+$color-black-original: #1B1F23;
+$color-white-original: #FFFFFF;
+
+// Grid breakpoints
+$xxl: 1215px;
+$xxl-min: 1216px;
+$xxl-max: 1215px;
+
+$xl: 959px;
+$xl-min: 960px;
+$xl-max: 959px;
+
+$lg: 767px;
+$lg-min: 768px;
+$lg-max: 767px;
+
+$md: 479px;
+$md-min: 480px;
+$md-max: 479px;
+
+$sm: 359px;
+$sm-min: 360px;
+$sm-max: 359px;
+
+$xs: 319px;
+$xs-min: 320px;
+
+// screens
+$screen-lg: 1199px;
+$screen-lg-min: 1200px;
+$screen-lg-max: $screen-lg;
+
+$screen-md: 959px;
+$screen-md-min: 960px;
+$screen-md-max: $screen-md;
+
+$screen-sm: 599px;
+$screen-sm-min: 600px;
+$screen-sm-max: $screen-sm;
+
+$screen-xs: 499px;
+$screen-xs-min: 500px;
+$screen-xs-max: $screen-xs;
+
+$screen-all: ('screen and (min-width: 0)', '.all');
+$screen-xs: ('screen and (max-width: 599px)', '.xs');
+$screen-sm: ('screen and (min-width: 600px) and (max-width: 959px)', '.sm');
+$screen-md: ('screen and (min-width: 960px) and (max-width: 1279px)', '.md');
+$screen-lg: ('screen and (min-width: 1280px) and (max-width: 1919px)', '.lg');
+$screen-xl: ('screen and (min-width: 1920px) and (max-width: 5000px)', '.xl');
+$screen-lt-sm: ('screen and (max-width: 599px)', '.lt-sm');
+$screen-lt-md: ('screen and (max-width: 959px)', '.lt-md');
+$screen-lt-lg: ('screen and (max-width: 1279px)', '.lt-lg');
+$screen-lt-xl: ('screen and (max-width: 1919px)', '.lt-xl');
+$screen-gt-xs: ('screen and (min-width: 600px)', '.gt-xs');
+$screen-gt-sm: ('screen and (min-width: 960px)', '.gt-sm');
+$screen-gt-md: ('screen and (min-width: 1280px)', '.gt-md');
+$screen-gt-lg: ('screen and (min-width: 1920px)', '.gt-lg');
+
+/* Новые переменные */
+$border-width:                1px !default;
+$border-color:            #ca2423 !default;
+
+$border-radius:            .25rem !default;
+$border-radius-lg:          .3rem !default;
+$border-radius-sm:          .2rem !default;
+
+$header-height: 56px;
+$header-height-xxl: 76px;
